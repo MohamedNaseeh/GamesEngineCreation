@@ -131,10 +131,10 @@ bool Update()
 void Render()
 {
 	//clear the screen
-	SDL_SetRenderDrawColor(g_renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+	SDL_SetRenderDrawColor(g_renderer, 0x00, 0x00, 0x00, 0x00);
 	SDL_RenderClear(g_renderer);
 	//placing where to render the texture
-	SDL_Rect renderLoaction = { 0,0,SCREEN_WIDTH,SCREEN_HEIGHT };
+	SDL_Rect renderLoaction = { 0,0,SCREEN_WIDTH,SCREEN_HEIGHT};
 
 	//Render to the screen
 	SDL_RenderCopyEx(g_renderer, g_texture, NULL, &renderLoaction, angle, NULL, SDL_FLIP_NONE);
