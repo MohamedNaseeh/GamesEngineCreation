@@ -11,6 +11,28 @@ SDL_Window* g_window = nullptr;
 SDL_Renderer* g_renderer = nullptr;
 SDL_Texture* g_texture = nullptr;
 
+bool InitSDL();
+void CloseSDL();
+bool Update();
+void Render();
+SDL_Texture* LoadTextureFromFile(string path);
+void FreeTexture();
+
+int main(int argc, char* args[])
+{
+	bool quit = false;
+	if (InitSDL())
+	{
+		while (!quit)
+		{
+			Render();
+			quit = Update();
+		}
+	}
+	CloseSDL();
+	return 0;
+}
+
 bool InitSDL()
 {
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
@@ -22,11 +44,11 @@ bool InitSDL()
 	{
 		//setup passed, so create window
 		g_window = SDL_CreateWindow("Games Engine Creation",
-									SDL_WINDOWPOS_UNDEFINED,
-									SDL_WINDOWPOS_UNDEFINED,
-									SCREEN_WIDTH,
-									SCREEN_HEIGHT,
-									SDL_WINDOW_SHOWN);	
+			SDL_WINDOWPOS_UNDEFINED,
+			SDL_WINDOWPOS_UNDEFINED,
+			SCREEN_WIDTH,
+			SCREEN_HEIGHT,
+			SDL_WINDOW_SHOWN);
 
 		//did the window get created?
 		if (g_window == nullptr)
@@ -38,12 +60,12 @@ bool InitSDL()
 
 		//renderer setup
 		g_renderer = SDL_CreateRenderer(g_window, -1, SDL_RENDERER_ACCELERATED);
-		
+
 		if (g_renderer != nullptr)
 		{
 			// init PNG loading
 			int imageFlags = IMG_INIT_PNG;
-			if (!(IMG_Init(imageFlags)& imageFlags))
+			if (!(IMG_Init(imageFlags) & imageFlags))
 			{
 				cout << "SDL_image could not initialize, Error: " << IMG_GetError();
 				return false;
@@ -70,15 +92,15 @@ void CloseSDL()
 	SDL_DestroyWindow(g_window);
 	g_window = nullptr;
 
-	//quit SDL subsystem
-	IMG_Quit();
-	SDL_Quit();
-
 	//clear the texture
 	FreeTexture();
 	//release the renderer
 	SDL_DestroyRenderer(g_renderer);
 	g_renderer = nullptr;
+
+	//quit SDL subsystem
+	IMG_Quit();
+	SDL_Quit();
 }
 
 bool Update()
@@ -103,7 +125,7 @@ bool Update()
 void Render()
 {
 	//clear the screen
-	SDL_SetRenderDrawColor(g_renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+	SDL_SetRenderDrawColor(g_renderer, 0x00, 0x00, 0x00, 0x00);
 	SDL_RenderClear(g_renderer);
 	//placing where to render the texture
 	SDL_Rect renderLoaction = { 0,0,SCREEN_WIDTH,SCREEN_HEIGHT };
@@ -149,19 +171,4 @@ void FreeTexture()
 		SDL_DestroyTexture(g_texture);
 		g_texture = nullptr;
 	}
-}
-//MAIN-------------------------------MAIN------------------------------------MAIN------------------------------------MAIN-----------------------------------MAIN-------------------------
-int main(int argc, char* args[])
-{
-	bool quit = false;
-	if (InitSDL())
-	{
-		while (!quit)
-		{
-			Render();
-			quit = Update();
-		}
-	}
-	CloseSDL();
-	return 0;
 }
