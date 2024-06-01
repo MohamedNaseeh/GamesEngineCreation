@@ -10,6 +10,7 @@ using namespace std;
 SDL_Window* g_window = nullptr;
 SDL_Renderer* g_renderer = nullptr;
 SDL_Texture* g_texture = nullptr;
+double angle = 0.0;
 
 bool InitSDL();
 void CloseSDL();
@@ -104,19 +105,39 @@ bool Update()
 		return true;
 		break;
 	}
+	if (e.type == SDL_KEYDOWN)
+	{
+		switch (e.key.keysym.sym) 
+		{
+		case SDLK_LEFT:
+			angle -= 5.0;
+			if (angle < 0.0) 
+			{
+				angle += 360.0;
+			}
+			break;
+		case SDLK_RIGHT:
+			angle += 5.0;
+			if (angle > 360.0)
+ {
+				angle -= 360.0;
+			}
+			break;
+		}
+	}
 	return false;
 }
 
 void Render()
 {
 	//clear the screen
-	SDL_SetRenderDrawColor(g_renderer, 0x00, 0x00, 0x00, 0x00);
+	SDL_SetRenderDrawColor(g_renderer, 0xFF, 0xFF, 0xFF, 0xFF);
 	SDL_RenderClear(g_renderer);
 	//placing where to render the texture
 	SDL_Rect renderLoaction = { 0,0,SCREEN_WIDTH,SCREEN_HEIGHT };
 
 	//Render to the screen
-	SDL_RenderCopyEx(g_renderer, g_texture, NULL, &renderLoaction, 0, NULL, SDL_FLIP_NONE);
+	SDL_RenderCopyEx(g_renderer, g_texture, NULL, &renderLoaction, angle, NULL, SDL_FLIP_NONE);
 	//update the screen
 	SDL_RenderPresent(g_renderer);
 }
@@ -137,7 +158,7 @@ SDL_Texture* LoadTextureFromFile(string path)
 		{
 			cout << "Unable to create texture from surface. Error: " << SDL_GetError();
 		}
-		//remove the loaded surface now that we have  a texture
+		//remove the loaded surface now that we have a texture
 		SDL_FreeSurface(p_surface);
 	}
 	else
@@ -155,7 +176,7 @@ void FreeTexture()
 	{
 		SDL_DestroyTexture(g_texture);
 		g_texture = nullptr;
-	}
+	}	
 }
 
 
