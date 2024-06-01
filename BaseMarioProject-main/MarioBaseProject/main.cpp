@@ -18,21 +18,6 @@ void Render();
 SDL_Texture* LoadTextureFromFile(string path);
 void FreeTexture();
 
-int main(int argc, char* args[])
-{
-	bool quit = false;
-	if (InitSDL())
-	{
-		while (!quit)
-		{
-			Render();
-			quit = Update();
-		}
-	}
-	CloseSDL();
-	return 0;
-}
-
 bool InitSDL()
 {
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
@@ -44,11 +29,11 @@ bool InitSDL()
 	{
 		//setup passed, so create window
 		g_window = SDL_CreateWindow("Games Engine Creation",
-			SDL_WINDOWPOS_UNDEFINED,
-			SDL_WINDOWPOS_UNDEFINED,
-			SCREEN_WIDTH,
-			SCREEN_HEIGHT,
-			SDL_WINDOW_SHOWN);
+									SDL_WINDOWPOS_UNDEFINED,
+									SDL_WINDOWPOS_UNDEFINED,
+									SCREEN_WIDTH,
+									SCREEN_HEIGHT,
+									SDL_WINDOW_SHOWN);
 
 		//did the window get created?
 		if (g_window == nullptr)
@@ -171,4 +156,20 @@ void FreeTexture()
 		SDL_DestroyTexture(g_texture);
 		g_texture = nullptr;
 	}
+}
+
+
+int main(int argc, char* args[])
+{
+	bool quit = false;
+	if (InitSDL())
+	{
+		while (!quit)
+		{
+			Render();
+			quit = Update();
+		}
+	}
+	CloseSDL();
+	return 0;
 }
