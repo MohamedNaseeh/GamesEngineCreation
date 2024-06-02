@@ -104,14 +104,25 @@ bool Update()
 	case SDL_QUIT:
 		return true;
 		break;
-	}
-	if (e.type == SDL_KEYDOWN)
-	{
-		switch (e.key.keysym.sym) 
+
+	case SDL_MOUSEBUTTONDOWN:
+		if (e.button.button == SDL_BUTTON_RIGHT)
 		{
+			return true; // Quit the program if the right mouse button is clicked
+		}
+		break;
+
+	case SDL_KEYDOWN:
+	{
+		switch (e.key.keysym.sym)
+		{
+		case SDLK_q:
+			return true;
+			break;
+
 		case SDLK_LEFT:
 			angle -= 5.0;
-			if (angle < 0.0) 
+			if (angle < 0.0)
 			{
 				angle += 360.0;
 			}
@@ -119,11 +130,14 @@ bool Update()
 		case SDLK_RIGHT:
 			angle += 5.0;
 			if (angle > 360.0)
- {
+			{
 				angle -= 360.0;
+
 			}
 			break;
 		}
+		cout << angle << endl;
+	}
 	}
 	return false;
 }
