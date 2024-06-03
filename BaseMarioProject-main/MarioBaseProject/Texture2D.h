@@ -9,20 +9,15 @@ using namespace std;
 class Texture2D
 {
 private:
-	SDL_Renderer* m_renderer;
-	SDL_Texture* m_texture;
+	SDL_Renderer* m_renderer = nullptr;
+	SDL_Texture* m_texture = nullptr;
 
-	int m_width;
-	int m_height;
+	int m_width = 0;
+	int m_height = 0;
 public:
-	Texture2D(SDL_Renderer* renderer)
-	{
-
-	}
-	~Texture2D()
-	{
-
-	}
+	Texture2D(SDL_Renderer* renderer);
+	~Texture2D();
+	
 	bool LoadFromFile(string path);
 	void Free();
 	void Render(Vector2D new_position, SDL_RendererFlip flip, double angle = 0.0);
