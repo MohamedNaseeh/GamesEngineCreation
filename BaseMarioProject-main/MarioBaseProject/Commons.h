@@ -1,4 +1,7 @@
 #pragma once
+#ifndef COMMONS_H
+#define COMMONS_H
+
 
 struct Vector2D
 {
@@ -26,3 +29,5 @@ enum SCREENS
 	SCREEN_GAMEOVER,
 	SCREEN_HIGHSCORES
 };
+
+#endif // !COMMONS_H

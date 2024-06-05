@@ -1,6 +1,6 @@
 #pragma once
-#ifndef _TEXTURE2D_H
-#define _TEXTURE2D_H
+#ifndef TEXTURE2D_H
+#define TEXTURE2D_H
 #include<SDL.h>
 #include"Commons.h"
 #include<string>
