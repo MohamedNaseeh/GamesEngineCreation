@@ -28,12 +28,10 @@ void Character::Update(float deltaTime, SDL_Event e)
 		{
 			case SDLK_LEFT:
 			m_position.x -= 5;
-			cout << "left" << endl;
 			break;
 
 			case SDLK_RIGHT:
-			m_position.x += 5;
-			cout << "right" << endl;
+				m_position.x += 5;
 			break;
 		}
 	}
