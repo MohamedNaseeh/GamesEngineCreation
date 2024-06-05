@@ -28,10 +28,11 @@ void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 
 bool GameScreenLevel1::setUpLevel()
 {
-	// set up player character
-	my_character = new Character(m_renderer, "Images/Mario.png", Vector2D(64, 330));
+	
 	//load the texture
 	m_background_texture = new Texture2D(m_renderer);
+	// set up player character
+	my_character = new Character(m_renderer, "Images/Mario.png", Vector2D(64, 330));
 	if (!m_background_texture->LoadFromFile("Images/test.bmp"))
 	{
 		cout << "failed to load the backgroud texture! 1" << endl;
