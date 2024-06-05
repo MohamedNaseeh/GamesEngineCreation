@@ -164,12 +164,18 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="GameScreen.cpp" />
+    <ClCompile Include="GameScreenLevel1.cpp" />
+    <ClCompile Include="GameScreenManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Texture2D.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Commons.h" />
     <ClInclude Include="constants.h" />
+    <ClInclude Include="GameScreen.h" />
+    <ClInclude Include="GameScreenLevel1.h" />
+    <ClInclude Include="GameScreenManager.h" />
     <ClInclude Include="Texture2D.h" />
   </ItemGroup>
   <ItemGroup>
