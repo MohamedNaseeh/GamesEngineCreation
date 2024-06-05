@@ -25,12 +25,12 @@ bool Texture2D::LoadFromFile(string path)
 	if (p_surface != nullptr)
 	{
 		//colour key the image to be transparent
-		SDL_SetColorKey(p_surface, SDL_TRUE, SDL_MapRGB(p_surface->format, 0, 0x00, 0x00));
+		SDL_SetColorKey(p_surface, SDL_TRUE, SDL_MapRGB(p_surface->format, 0, 0xff, 0xff));
 
 		m_texture = SDL_CreateTextureFromSurface(m_renderer, p_surface);
 		if (m_texture == nullptr)
 		{
-			cout << "Unable to create texture from surface. Error: " << SDL_GetError();
+			cout << "Unable to create texture from surface 1. Error: " << SDL_GetError();
 		}
 		else
 		{
@@ -42,7 +42,7 @@ bool Texture2D::LoadFromFile(string path)
 	}
 	else
 	{
-		cout << "Unable to create texture from surface. Error: " << IMG_GetError();
+		cout << "Unable to create texture from surface 2. Error: " << IMG_GetError();
 	}
 	//return whether the process was successful
 	return m_texture != nullptr;

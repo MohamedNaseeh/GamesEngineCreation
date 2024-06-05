@@ -6,12 +6,14 @@
 #include<SDL_mixer.h>
 #include "Texture2D.h"
 #include "Commons.h"
+#include "GameScreenManager.h"
 using namespace std;
 
 //Globals
 SDL_Window* g_window = nullptr;
 SDL_Renderer* g_renderer = nullptr;
-Texture2D* g_texture = nullptr;
+GameScreenManager* game_screen_manager;
+Uint32 g_old_time;
 
 bool InitSDL();
 void CloseSDL();
@@ -63,11 +65,7 @@ bool InitSDL()
 		}
 
 		//load the background texture
-		g_texture = new Texture2D(g_renderer);
-		if (!g_texture->LoadFromFile("Images/test.bmp"))
-		{
-			return false;
-		}
+		
 	}
 	return true;
 }
@@ -75,17 +73,18 @@ bool InitSDL()
 void Render()
 {
 	//clear the screen
-	SDL_SetRenderDrawColor(g_renderer, 0x00, 0x00, 0x00, 0x00);
+	SDL_SetRenderDrawColor(g_renderer, 0xff, 0xff, 0xff, 0xff);
 	SDL_RenderClear(g_renderer);
-
-	g_texture->Render(Vector2D(), SDL_FLIP_NONE);
 
 	//update the screen
 	SDL_RenderPresent(g_renderer);
+
+	game_screen_manager->Render();
 }
 
 bool Update()
 {
+	Uint32 new_time = SDL_GetTicks();
 	//event handler
 	SDL_Event e;
 
@@ -100,6 +99,8 @@ bool Update()
 		return true;
 		break;
 	}
+	game_screen_manager->Update((float)(new_time - g_old_time) / 1000.0f, e);
+	g_old_time = new_time;
 	return false;
 }
 
@@ -113,9 +114,9 @@ void CloseSDL()
 	SDL_DestroyRenderer(g_renderer);
 	g_renderer = nullptr;
 
-	//release the texture
-	delete g_texture;
-	g_texture = nullptr;
+	//destroy game screen manager
+	delete game_screen_manager;
+	game_screen_manager = nullptr;
 
 	//quit SDL subsystem
 	IMG_Quit();
@@ -127,6 +128,10 @@ int main(int argc, char* args[])
 	bool quit = false;
 	if (InitSDL())
 	{
+		game_screen_manager = new GameScreenManager(g_renderer, SCREEN_LEVEL1);
+		//set the time
+		g_old_time = SDL_GetTicks();
+
 		while (!quit)
 		{
 			Render();
