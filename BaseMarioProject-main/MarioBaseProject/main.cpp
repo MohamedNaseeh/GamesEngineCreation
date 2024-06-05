@@ -76,10 +76,11 @@ void Render()
 	SDL_SetRenderDrawColor(g_renderer, 0xff, 0xff, 0xff, 0xff);
 	SDL_RenderClear(g_renderer);
 
+	game_screen_manager->Render();
 	//update the screen
 	SDL_RenderPresent(g_renderer);
 
-	game_screen_manager->Render();
+	
 }
 
 bool Update()
@@ -125,9 +126,10 @@ void CloseSDL()
 
 int main(int argc, char* args[])
 {
-	bool quit = false;
+	
 	if (InitSDL())
 	{
+		bool quit = false;
 		game_screen_manager = new GameScreenManager(g_renderer, SCREEN_LEVEL1);
 		//set the time
 		g_old_time = SDL_GetTicks();
