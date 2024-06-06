@@ -6,6 +6,7 @@ Character::Character(SDL_Renderer* renderer, string imagePath, Vector2D start_po
 	m_renderer = renderer;
 	m_position = start_position;
 	m_texture = new Texture2D(m_renderer);
+	m_facing_direction = FACING_RIGHT;
 	if (!m_texture->LoadFromFile(imagePath))
 	{
 		cout << "failed to load the backgroud texture! 2" << endl;
@@ -18,6 +19,14 @@ Character::~Character()
 void Character::Render()
 {
 	m_texture->Render(m_position, SDL_FLIP_NONE);
+	if (m_facing_direction == FACING_RIGHT)
+	{
+		m_texture->Render(m_position, SDL_FLIP_NONE);
+	}
+	else
+	{
+		m_texture->Render(m_position, SDL_FLIP_HORIZONTAL);
+	}
 }
 void Character::Update(float deltaTime, SDL_Event e)
 {
@@ -28,12 +37,12 @@ void Character::Update(float deltaTime, SDL_Event e)
 		{
 			case SDLK_LEFT:
 			m_position.x -= 5;
-			cout << "left" << endl;
+			m_facing_direction = FACING_LEFT;
 			break;
 
 			case SDLK_RIGHT:
 			m_position.x += 5;
-			cout << "right" << endl;
+			m_facing_direction = FACING_RIGHT;
 			break;
 		}
 	}

@@ -9,6 +9,9 @@ using namespace std;
 class Texture2D;
 class Character
 {
+private:
+	FACING m_facing_direction;
+
 protected:
 	SDL_Renderer* m_renderer;
 	Vector2D m_position;
