@@ -60,8 +60,8 @@ bool Texture2D::LoadFromFile(string path)
 void Texture2D::Render(Vector2D new_position, SDL_RendererFlip flip, double angle)
 {
 	//placing where to render the texture
-	SDL_Rect renderLoaction = { new_position.x,new_position.y,m_width,m_height};
+	SDL_Rect renderLoaction = { new_position.x,new_position.y,m_width,m_height };
 
 	//Render to the screen
-	SDL_RenderCopyEx(m_renderer, m_texture, NULL, &renderLoaction, 0, NULL, SDL_FLIP_NONE);
+	SDL_RenderCopyEx(m_renderer, m_texture, NULL, &renderLoaction, 0, NULL, flip);
 }

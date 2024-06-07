@@ -39,6 +39,8 @@ void GameScreenManager::changeScreen(SCREENS new_screen)
 		tempScreen = nullptr;
 		break;
 
-	default:;
+	default:
+		cout << "error!" << endl;
+		break;
 	}
 }
