@@ -62,7 +62,7 @@ void Character::Update(float deltaTime, SDL_Event e)
 		switch (e.key.keysym.sym)
 		{
 			case SDLK_LEFT:
-				m_moving_left = true;
+		m_moving_left = true;
 			break;
 
 			case SDLK_RIGHT:
@@ -75,7 +75,7 @@ void Character::Update(float deltaTime, SDL_Event e)
 					Jump();
 				}
 		}
-		break;
+			break;
 
 		case SDL_KEYUP:
 		switch (e.key.keysym.sym)
