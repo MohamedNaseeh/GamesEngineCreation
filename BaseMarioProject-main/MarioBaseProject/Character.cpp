@@ -7,7 +7,6 @@ Character::Character(SDL_Renderer* renderer, string imagePath, Vector2D start_po
 	m_renderer = renderer;
 	m_position = start_position;
 	m_texture = new Texture2D(m_renderer);
-	m_facing_direction = FACING_RIGHT;
 	m_moving_left = false;
 	m_moving_right = false;
 	if (!m_texture->LoadFromFile(imagePath))
@@ -56,40 +55,7 @@ void Character::Update(float deltaTime, SDL_Event e)
 	{
 		MoveRight(deltaTime);
 	}
-	switch (e.type)
-	{
-		case SDL_KEYDOWN:
-		switch (e.key.keysym.sym)
-		{
-			case SDLK_LEFT:
-		m_moving_left = true;
-			break;
-
-			case SDLK_RIGHT:
-				m_moving_right = true;
-			break;
-
-			case SDLK_UP:
-				if (m_can_jump)
-				{
-					Jump();
-				}
-		}
-			break;
-
-		case SDL_KEYUP:
-		switch (e.key.keysym.sym)
-		{
-			case SDLK_LEFT:
-				m_moving_left = false;
-				break;
-
-			case SDLK_RIGHT:
-				m_moving_right = false;
-				break;
-		}
-		break;
-	}
+	
 }
 void Character::setposition(Vector2D new_position)
 {
