@@ -32,7 +32,6 @@ void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 
 bool GameScreenLevel1::setUpLevel()
 {
-	
 	//load the texture
 	m_background_texture = new Texture2D(m_renderer);
 	// set up player character
@@ -40,7 +39,7 @@ bool GameScreenLevel1::setUpLevel()
 	luigi = new CharacterLuigi(m_renderer, "Images/Luigi.png", Vector2D(100, 330));
 	if (!m_background_texture->LoadFromFile("Images/test.bmp"))
 	{
-		cout << "failed to load the backgroud texture! 1" << endl;
+		cout << "failed to load the background texture! 1" << endl;
 		return false;
 	}
 	return true;
