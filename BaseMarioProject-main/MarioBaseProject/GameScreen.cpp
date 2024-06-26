@@ -9,7 +9,6 @@ GameScreen::~GameScreen()
 {
 	m_renderer = nullptr;
 }
-
 void GameScreen::Render()
 {
 

@@ -46,7 +46,7 @@ bool Texture2D::LoadFromFile(string path)
 			m_width = p_surface->w;
 			m_height = p_surface->h;
 		}
-		//remove the loaded surface now that we have  a texture
+		//remove the loaded surface now that we have a texture
 		SDL_FreeSurface(p_surface);
 	}
 	else
@@ -60,8 +60,8 @@ bool Texture2D::LoadFromFile(string path)
 void Texture2D::Render(Vector2D new_position, SDL_RendererFlip flip, double angle)
 {
 	//placing where to render the texture
-	SDL_Rect renderLoaction = { new_position.x,new_position.y,m_width,m_height };
+	SDL_Rect renderLocation = { new_position.x,new_position.y,m_width,m_height };
 
 	//Render to the screen
-	SDL_RenderCopyEx(m_renderer, m_texture, NULL, &renderLoaction, 0, NULL, flip);
+	SDL_RenderCopyEx(m_renderer, m_texture, NULL, &renderLocation, 0, NULL, flip);
 }

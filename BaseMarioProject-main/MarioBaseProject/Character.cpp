@@ -11,7 +11,7 @@ Character::Character(SDL_Renderer* renderer, string imagePath, Vector2D start_po
 	m_moving_right = false;
 	if (!m_texture->LoadFromFile(imagePath))
 	{
-		cout << "failed to load the backgroud texture! 2" << endl;
+		cout << "failed to load the background texture! 2" << endl;
 	}
 }
 Character::~Character()
