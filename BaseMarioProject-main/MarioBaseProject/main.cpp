@@ -35,7 +35,7 @@ bool InitSDL()
 									SDL_WINDOWPOS_UNDEFINED,
 									SCREEN_WIDTH,
 									SCREEN_HEIGHT,
-									SDL_WINDOW_SHOWN);
+									SDL_WINDOW_RESIZABLE);
 
 		//did the window get created?
 		if (g_window == nullptr)
