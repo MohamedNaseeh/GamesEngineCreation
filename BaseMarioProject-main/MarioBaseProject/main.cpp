@@ -80,7 +80,7 @@ void Render()
 	//update the screen
 	SDL_RenderPresent(g_renderer);
 
-	
+
 }
 
 bool Update()
