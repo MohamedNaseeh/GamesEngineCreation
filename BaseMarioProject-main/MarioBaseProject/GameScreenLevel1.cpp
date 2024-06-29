@@ -35,8 +35,8 @@ bool GameScreenLevel1::setUpLevel()
 	//load the texture
 	m_background_texture = new Texture2D(m_renderer);
 	// set up player character
-	mario = new CharacterMario(m_renderer, "Images/Mario.png", Vector2D(64, 330));
-	luigi = new CharacterLuigi(m_renderer, "Images/Luigi.png", Vector2D(100, 330));
+	mario = new CharacterMario(m_renderer, "Images/Mario.png", Vector2D(64, 340));
+	luigi = new CharacterLuigi(m_renderer, "Images/Luigi.png", Vector2D(100, 340));
 	if (!m_background_texture->LoadFromFile("Images/test.bmp"))
 	{
 		cout << "failed to load the background texture! 1" << endl;

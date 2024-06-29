@@ -2,12 +2,11 @@
 
 CharacterLuigi::CharacterLuigi(SDL_Renderer* renderer, string imagePath, Vector2D start_position) : Character(renderer, imagePath, start_position)
 {
-	m_renderer = renderer;
+	
 }
 CharacterLuigi::~CharacterLuigi()
 {
-	delete m_renderer;
-	m_renderer = nullptr;
+	
 }
 void CharacterLuigi::Update(float deltaTime, SDL_Event e)
 {

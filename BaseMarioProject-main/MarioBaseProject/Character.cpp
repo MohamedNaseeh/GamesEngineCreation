@@ -7,12 +7,11 @@ Character::Character(SDL_Renderer* renderer, string imagePath, Vector2D start_po
 	m_renderer = renderer;
 	m_position = start_position;
 	m_texture = new Texture2D(m_renderer);
-	m_moving_left = false;
-	m_moving_right = false;
 	if (!m_texture->LoadFromFile(imagePath))
 	{
 		cout << "failed to load the background texture! 2" << endl;
 	}
+	m_facing_direction = FACING_RIGHT;
 }
 Character::~Character()
 {
@@ -57,7 +56,7 @@ void Character::Update(float deltaTime, SDL_Event e)
 	}
 	
 }
-void Character::setposition(Vector2D new_position)
+void Character::SetPosition(Vector2D new_position)
 {
 	m_position = new_position;
 }
@@ -77,14 +76,17 @@ void Character::MoveRight(float deltaTime)
 }
 void Character::AddGravity(float deltaTime)
 {
+
 	if (m_position.y + 64 <= SCREEN_HEIGHT)
 	{
 		m_position.y += GRAVITY * deltaTime;
+		
 	}
 	else
 	{
 		m_can_jump = true;
 	}
+	
 }
 void Character::Jump()
 {

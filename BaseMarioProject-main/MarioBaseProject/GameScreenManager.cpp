@@ -40,7 +40,6 @@ void GameScreenManager::changeScreen(SCREENS new_screen)
 		break;
 
 	default:
-		cout << "error!" << endl;
 		break;
 	}
 }

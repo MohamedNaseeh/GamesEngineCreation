@@ -16,11 +16,11 @@ protected:
 	SDL_Renderer* m_renderer;
 	Vector2D m_position;
 	Texture2D* m_texture;
-	bool m_moving_right;
-	bool m_moving_left;
-	bool m_jumping;
-	bool m_can_jump;
-	float m_jump_force;
+	bool m_moving_right = false;
+	bool m_moving_left = false;
+	bool m_jumping = false;
+	bool m_can_jump = false;
+	float m_jump_force = 0.0f;
 	virtual void MoveLeft(float deltaTime);
 	virtual void MoveRight(float deltaTime);
 
@@ -32,7 +32,7 @@ public:
 	virtual void Update(float deltaTime, SDL_Event e);
 	virtual void AddGravity(float deltaTime);
 	virtual void Jump();
-	void setposition(Vector2D new_position);
+	void SetPosition(Vector2D new_position);
 	Vector2D GetPosition();
 };
 

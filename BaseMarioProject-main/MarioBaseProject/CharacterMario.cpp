@@ -2,12 +2,11 @@
 
 CharacterMario::CharacterMario(SDL_Renderer* renderer, string imagePath, Vector2D start_position) : Character(renderer, imagePath, start_position)
 {
-	m_renderer = renderer;
+	
 }
 CharacterMario::~CharacterMario()
 {
-	delete m_renderer;
-	m_renderer = nullptr;
+	
 }
 void CharacterMario::Update(float deltaTime, SDL_Event e)
 {
@@ -28,7 +27,7 @@ void CharacterMario::Update(float deltaTime, SDL_Event e)
 
 		case SDLK_UP:
 			if (m_can_jump)
-			{
+			{	
 				Jump();
 			}
 		}

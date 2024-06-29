@@ -43,8 +43,16 @@ bool Texture2D::LoadFromFile(string path)
 		}
 		else
 		{
-			m_width = p_surface->w;
-			m_height = p_surface->h;
+			if (path == "Images/test.bmp")
+			{
+				m_width = p_surface->w + 12;
+				m_height = p_surface->h + 16;
+			}
+			else
+			{
+				m_width = p_surface->w;
+				m_height = p_surface->h;
+			}
 		}
 		//remove the loaded surface now that we have a texture
 		SDL_FreeSurface(p_surface);
