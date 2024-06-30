@@ -1,6 +1,6 @@
 #include "Character.h"
 #include "Texture2D.h"
-#include "constants.h"
+#include "Constants.h"
 
 Character::Character(SDL_Renderer* renderer, string imagePath, Vector2D start_position)
 {
@@ -18,8 +18,7 @@ Character::~Character()
 	m_renderer = nullptr;
 }
 void Character::Render()
-{
-	m_texture->Render(m_position, SDL_FLIP_NONE);
+{  
 	if (m_facing_direction == FACING_RIGHT)
 	{
 		m_texture->Render(m_position, SDL_FLIP_NONE);
@@ -56,11 +55,11 @@ void Character::Update(float deltaTime, SDL_Event e)
 	}
 	
 }
-void Character::SetPosition(Vector2D new_position)
+void Character::SetPosition(Vector2D new_position)//?????
 {
 	m_position = new_position;
 }
-Vector2D Character::GetPosition()
+Vector2D Character::GetPosition()//????????
 {
 	return m_position;
 }

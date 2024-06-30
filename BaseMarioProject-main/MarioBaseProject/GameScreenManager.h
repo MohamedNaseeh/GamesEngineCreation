@@ -17,7 +17,7 @@ public:
 
 	void Render();
 	void Update(float deltaTime, SDL_Event e);
-	void changeScreen(SCREENS new_screen);
+	void ChangeScreen(SCREENS new_screen);
 
 };
-#endif // !
+#endif // !GAMESCREENMANAGER_H

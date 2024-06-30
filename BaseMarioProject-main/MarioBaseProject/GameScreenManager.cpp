@@ -6,7 +6,7 @@ GameScreenManager::GameScreenManager(SDL_Renderer* renderer, SCREENS startScreen
 {
 	m_renderer = renderer;
 	m_current_screen = nullptr;
-	changeScreen(startScreen);
+	ChangeScreen(startScreen);
 }
 GameScreenManager::~GameScreenManager()
 {
@@ -22,7 +22,7 @@ void GameScreenManager::Update(float deltaTime, SDL_Event e)
 {
 	m_current_screen->Update(deltaTime, e);
 }
-void GameScreenManager::changeScreen(SCREENS new_screen)
+void GameScreenManager::ChangeScreen(SCREENS new_screen)
 {
 	//clear up the old screen
 	if (m_current_screen != nullptr)
