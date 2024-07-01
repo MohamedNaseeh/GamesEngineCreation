@@ -2,6 +2,7 @@
 #ifndef COMMONS_H
 #define COMMONS_H
 
+
 struct Vector2D
 {
 	float x;
@@ -19,19 +20,6 @@ struct Vector2D
 	}
 };
 
-struct Rect2D
-{
-	float x, y;
-	float width, height;
-
-	Rect2D(float x_pos, float y_pos, float width, float height)
-	{
-		x = x_pos;
-		y = y_pos;
-		this->width = width;
-		this->height = height;
-	}
-};
 enum SCREENS
 {
 	SCREEN_INTRO,
