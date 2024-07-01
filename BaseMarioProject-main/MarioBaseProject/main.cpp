@@ -1,10 +1,9 @@
 //Be grateful for humble beginnings, because the next level will always require so much more of you
 #include<iostream>
-#include"constants.h"
+#include"Constants.h"
 #include<SDL.h>
 #include<SDL_image.h>
 #include<SDL_mixer.h>
-#include "Texture2D.h"
 #include "Commons.h"
 #include "GameScreenManager.h"
 using namespace std;
@@ -63,8 +62,6 @@ bool InitSDL()
 			cout << "renderer could not initialise. Error: " << SDL_GetError();
 			return false;
 		}
-
-		//load the background texture
 		
 	}
 	return true;
@@ -79,8 +76,6 @@ void Render()
 	game_screen_manager->Render();
 	//update the screen
 	SDL_RenderPresent(g_renderer);
-
-
 }
 
 bool Update()

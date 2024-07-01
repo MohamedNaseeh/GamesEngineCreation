@@ -178,7 +178,7 @@
     <ClInclude Include="CharacterLuigi.h" />
     <ClInclude Include="CharacterMario.h" />
     <ClInclude Include="Commons.h" />
-    <ClInclude Include="constants.h" />
+    <ClInclude Include="Constants.h" />
     <ClInclude Include="GameScreen.h" />
     <ClInclude Include="GameScreenLevel1.h" />
     <ClInclude Include="GameScreenManager.h" />
