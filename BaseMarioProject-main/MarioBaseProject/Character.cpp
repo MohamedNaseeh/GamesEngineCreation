@@ -1,5 +1,4 @@
 #include "Character.h"
-#include "Texture2D.h"
 #include "Constants.h"
 
 Character::Character(SDL_Renderer* renderer, string imagePath, Vector2D start_position)
@@ -12,10 +11,16 @@ Character::Character(SDL_Renderer* renderer, string imagePath, Vector2D start_po
 		cout << "failed to load the background texture! 2" << endl;
 	}
 	m_facing_direction = FACING_RIGHT;
+	m_collision_radius = 15.0f;
+
 }
 Character::~Character()
 {
 	m_renderer = nullptr;
+}
+float Character::GetCollisionRadius()
+{
+	return m_collision_radius;
 }
 void Character::Render()
 {  
